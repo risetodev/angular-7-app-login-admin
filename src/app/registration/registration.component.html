@@ -1,0 +1,23 @@
+<div class="col-12 d-flex align-items-center justify-content-center login">
+  <form ngNativeValidate #loginForm="ngForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address: {{ user.email }}</label>
+      <input [(ngModel)]="user.email" type="email" class="form-control" name="InputEmail1" aria-describedby="emailHelp"
+        placeholder="Enter email" required>
+    </div>
+    <div class="form-group d-flex ">
+      <label class="mr-1"> Password: {{ user.password }}<input [(ngModel)]="user.password" type="password" class="form-control"
+          name="InputPassword1" placeholder="Password" required></label>
+
+      <label class="ml-1"> Confirm password: {{ bufPass }} <input [(ngModel)]="bufPass" type="password" class="form-control"
+          name="InputPassword2" placeholder="Confirm password" required></label>
+
+    </div>
+    <div class="d-flex justify-content-between">
+      <button routerLink="" type="button" class="btn btn-outline-dark px-3">Back</button>
+      <button (click)="submitRegistration()" type="submit" class="btn btn-success px-3" [disabled]="isInValid()">Submit</button>     
+    </div>
+    <span class="list-group-item list-group-item-success my-3 align-center" *ngIf="success">Success! Redirecting on "sign in" page...</span>
+    <span class="list-group-item list-group-item-danger my-3 align-center" *ngIf="error">User already exist!</span>
+  </form>
+</div>

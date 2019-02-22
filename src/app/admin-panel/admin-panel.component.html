@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="col-12 d-flex align-items-center justify-content-center login">
+        <form ngNativeValidate #updateForm="ngForm">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address:</label>
+            <input [(ngModel)]="user.email" type="email" class="form-control" name="InputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter email" required>
+          </div>
+          <span>Role: </span>
+          <div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input [(ngModel)]="user.role"  [value]="'User'"[checked]="user.role == 'User'" type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+              <label class="custom-control-label" for="customRadioInline1">User</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input  [(ngModel)]="user.role"  [value]="'Admin'"[checked]="user.role == 'Admin'" type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+              <label class="custom-control-label" for="customRadioInline2">Admin</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input  [(ngModel)]="user.role"  [value]="'Denied'"[checked]="user.role == 'Denied'" type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+              <label class="custom-control-label" for="customRadioInline3">Denied access</label>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center my-3">
+            <button (click)="submitUpdate(user)" type="submit" class="btn btn-warning px-3" [disabled]="isInValid()">Update</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <ul class="list-group">
+        <li *ngFor="let user of users; let i = index;" (click)="selectedUser(user, i)" [class.active]="(click)"
+          [class.active]="i == selected" class="list-group-item d-flex justify-content-between my-1">
+          <span><i class="fas fa-user-tie"></i> {{ user.email }} </span>
+          <span><i class="fas fa-user-cog"></i> {{ user.role }} </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-sm">
+      <div *ngFor="let user of users" class="my-1">
+        <div class="list-group-item d-flex justify-content-between">
+          <div class="row d-flex justify-content-between">
+            <a class=" flex-column align-items-start">
+              <div class="w-100">
+                <span><i class="fas fa-user-tie"></i> {{ user.email }} </span>
+                <br>
+                <span><i class="fas fa-user-cog"></i> {{ user.role }} </span>
+              </div>
+            </a>
+          </div>
+          <div class="col-1 d-flex justify-content-center mx-3" id="deleteButton">
+            <button (click)="deleteUser(user)" type="button" class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

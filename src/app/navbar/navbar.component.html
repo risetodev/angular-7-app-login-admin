@@ -1,0 +1,24 @@
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <h2>
+      <i class="fab fa-angular"></i>
+      +
+      <i class="fab fa-node"></i>
+      +
+      <i class="fas fa-database"></i>
+    </h2>
+
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/content">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" *ngIf="role == 'Admin'" routerLink="/registration">Registration</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" *ngIf="role == 'Admin'" routerLink="/admin">Admin panel</a>
+  </li>
+  <li class="nav-item">
+    <a (click)="logOut()" class="nav-link" routerLink="">Log out: <span> [ email: {{ email }} | role: {{ role }} ]</span></a>
+  </li>
+</ul>
